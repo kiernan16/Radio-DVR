@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var audioPlayerView: UIView!
 //    var audioPlayer = AVAudioPlayer()
     
-    var player = AVPlayer()
+//    var player = AVPlayer()
+    var player = AVAudioPlayer()
     let avpController = AVPlayerViewController()
     var currentItem: AVPlayerItem!
 
@@ -118,15 +119,27 @@ class ViewController: UIViewController {
         let mp3URL = NSURL(string: path)
         
         
+                do {
+                    //var error: NSError
+                    player = try AVAudioPlayer(contentsOf: mp3URL as! URL)
+                    // do something with data
+                    // if the call fails, the catch block is executed
+                } catch {
+                    print(error)
+                }
         
-        player = AVPlayer(url: mp3URL! as URL)
+                player.prepareToPlay()
+                player.play()
         
-        avpController.player = player
-        avpController.view.frame = audioPlayerView.frame
-        self.addChildViewController(avpController)
-        self.view.addSubview(avpController.view)
         
-        currentItem = player.currentItem!
+      //  player = AVPlayer(url: mp3URL! as URL)
+        
+//        avpController.player = player
+//        avpController.view.frame = audioPlayerView.frame
+//        self.addChildViewController(avpController)
+//        self.view.addSubview(avpController.view)
+//        
+//        currentItem = player.currentItem!
         
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
         
