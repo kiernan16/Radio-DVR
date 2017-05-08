@@ -47,6 +47,7 @@
 		349EE9021EC023DF0046FDA0 /* Radio DVRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Radio DVRUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		349EE9061EC023DF0046FDA0 /* Radio_DVRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio_DVRUITests.swift; sourceTree = "<group>"; };
 		349EE9081EC023DF0046FDA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		349EE9141EC0241F0046FDA0 /* Radio DVR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Radio DVR.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		349EE8E51EC023DE0046FDA0 /* Radio DVR */ = {
 			isa = PBXGroup;
 			children = (
+				349EE9141EC0241F0046FDA0 /* Radio DVR.entitlements */,
 				349EE8E61EC023DE0046FDA0 /* AppDelegate.swift */,
 				349EE8E81EC023DE0046FDA0 /* ViewController.swift */,
 				349EE8EA1EC023DF0046FDA0 /* Main.storyboard */,
@@ -195,6 +197,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = FHYH9M7LGU;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					349EE8F61EC023DF0046FDA0 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -415,6 +425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Radio DVR/Radio DVR.entitlements";
 				DEVELOPMENT_TEAM = FHYH9M7LGU;
 				INFOPLIST_FILE = "Radio DVR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Radio DVR/Radio DVR.entitlements";
 				DEVELOPMENT_TEAM = FHYH9M7LGU;
 				INFOPLIST_FILE = "Radio DVR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
