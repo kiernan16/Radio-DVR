@@ -40,18 +40,35 @@
                                     <action selector="LoadMP3Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duQ-f3-z6L"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="guF-hG-ub9">
+                                <rect key="frame" x="16" y="531" width="343" height="29"/>
+                                <segments>
+                                    <segment title="M"/>
+                                    <segment title="T"/>
+                                    <segment title="W"/>
+                                    <segment title="TH"/>
+                                    <segment title="F"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="iUr-ja-AA8"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yCj-mN-ZHD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gnv-Qo-3gt"/>
+                            <constraint firstItem="l6J-0p-5GF" firstAttribute="top" secondItem="guF-hG-ub9" secondAttribute="bottom" constant="8" id="M5w-YL-KKg"/>
                             <constraint firstItem="yCj-mN-ZHD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YYF-Bz-kj7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="l6J-0p-5GF" secondAttribute="trailing" constant="100" id="ex3-6D-Iek"/>
+                            <constraint firstItem="guF-hG-ub9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="h5E-8R-skN"/>
                             <constraint firstItem="l6J-0p-5GF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="khU-UY-gL5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="l6J-0p-5GF" secondAttribute="bottom" constant="8" id="uCc-Qf-93h"/>
+                            <constraint firstItem="guF-hG-ub9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yFc-lT-sOe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="audioPlayerView" destination="yCj-mN-ZHD" id="I0g-VL-tm2"/>
+                        <outlet property="daySelector" destination="guF-hG-ub9" id="yrS-M8-5mF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -15,6 +15,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var audioPlayerView: UIView!
 
     var player = AVAudioPlayer()
+    var episodeDay = "monday"
+    
+    @IBOutlet weak var daySelector: UISegmentedControl!
+    
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        
+        switch daySelector.selectedSegmentIndex {
+        case 0:
+            episodeDay = "monday"
+            break
+        case 1:
+            episodeDay = "tuesday"
+            break
+        case 2:
+            episodeDay = "wednesday"
+            break
+        case 3:
+            episodeDay = "thursday"
+            break
+        case 4:
+            episodeDay = "friday"
+            break
+            
+        default:
+            break
+        }
+    }
+    
+
 
 
     override func viewDidLoad() {
@@ -34,19 +63,19 @@ class ViewController: UIViewController {
         var dayOfWeek = ""
         
         switch day {
-        case 0:
+        case 2:
             dayOfWeek = "monday"
             break
-        case 1:
+        case 3:
             dayOfWeek = "tuesday"
             break
-        case 2:
+        case 4:
             dayOfWeek = "wednesday"
             break
-        case 3:
+        case 5:
             dayOfWeek = "thursday"
             break
-        case 4:
+        case 6:
             dayOfWeek = "friday"
             break
         default:
@@ -55,7 +84,7 @@ class ViewController: UIViewController {
         
        // if let audioUrl = URL(string: "192.168.1.140/radio/redeye/\(dayOfWeek).mp3") {
 //            if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
-         if let audioUrl = URL(string: "http://10.23.75.214/sunday.mp3") {
+         if let audioUrl = URL(string: "http://10.23.75.214/\(dayOfWeek).mp3") {
             // then lets create your document folder url
             let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             
@@ -95,7 +124,7 @@ class ViewController: UIViewController {
     func displayMP3() {
 
             let fileManager = FileManager.default
-            let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("sunday.mp3")
+            let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("\(episodeDay).mp3")
             print("imagePAth: \(imagePAth)")
             if fileManager.fileExists(atPath: imagePAth){
                 loadMP3(path: imagePAth)
@@ -123,7 +152,7 @@ class ViewController: UIViewController {
                 player.play()
         
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
-            
+        
         player.play()
         
     }
@@ -149,3 +178,5 @@ class ViewController: UIViewController {
 
 }
 
+
+//http://stackoverflow.com/questions/34971317/swift-audio-slider-control
