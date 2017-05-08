@@ -5,7 +5,6 @@
 //  Created by Matthew Kiernan on 5/7/17.
 //  Copyright © 2017 Matt Kiernan. All rights reserved.
 //
-
 import UIKit
 import AVFoundation
 import AVKit
@@ -13,9 +12,9 @@ import AVKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var audioPlayerView: UIView!
-
+    
     var player = AVAudioPlayer()
-    var episodeDay = "monday"
+    var episodeDay = ""
     
     @IBOutlet weak var daySelector: UISegmentedControl!
     
@@ -43,21 +42,22 @@ class ViewController: UIViewController {
         }
     }
     
-
-
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-    downloadMP3(day: Calendar.current.component(.weekday, from: Date()))
+        daySelector.selectedSegmentIndex = UISegmentedControlNoSegment
+        downloadMP3(day: Calendar.current.component(.weekday, from: Date()))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     func downloadMP3(day: Int) {
         var dayOfWeek = ""
@@ -82,9 +82,9 @@ class ViewController: UIViewController {
             dayOfWeek = "x"
         }
         
-       // if let audioUrl = URL(string: "192.168.1.140/radio/redeye/\(dayOfWeek).mp3") {
-//            if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
-         if let audioUrl = URL(string: "http://10.23.75.214/\(dayOfWeek).mp3") {
+         if let audioUrl = URL(string: "192.168.1.140/radio/redeye/\(dayOfWeek).mp3") {
+        //            if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
+//        if let audioUrl = URL(string: "http://10.23.75.214/\(dayOfWeek).mp3") {
             // then lets create your document folder url
             let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             
@@ -135,60 +135,68 @@ class ViewController: UIViewController {
     }
     
     func displayMP3() {
-
-            let fileManager = FileManager.default
-            let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("\(episodeDay).mp3")
-            print("imagePAth: \(imagePAth)")
-            if fileManager.fileExists(atPath: imagePAth){
-                loadMP3(path: imagePAth)
-            }else{
-                print("No Image")
-            }
+        
+        let fileManager = FileManager.default
+        let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("\(episodeDay).mp3")
+        print("imagePAth: \(imagePAth)")
+        if fileManager.fileExists(atPath: imagePAth){
+            loadMP3(path: imagePAth)
+        }else{
+            print("No Image")
+        }
     }
     
+    func manualDownload() {
+        
+        downloadMP3(day: (daySelector.selectedSegmentIndex + 2))
+    }
     
     
     func loadMP3(path: String) {
         
         let mp3URL = NSURL(string: path)
         
-                do {
-                    //var error: NSError
-                    player = try AVAudioPlayer(contentsOf: mp3URL as! URL)
-                    // do something with data
-                    // if the call fails, the catch block is executed
-                } catch {
-                    print(error)
-                }
+        do {
+            //var error: NSError
+            player = try AVAudioPlayer(contentsOf: mp3URL as! URL)
+            // do something with data
+            // if the call fails, the catch block is executed
+        } catch {
+            print(error)
+        }
         
-                player.prepareToPlay()
-                player.play()
+        player.prepareToPlay()
+        player.play()
         
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
         
         player.play()
         
     }
-
     
-  
+    
+    @IBAction func manualLoadButton(_ sender: UIButton) {
+    manualDownload()
+    }
+    
     @IBAction func LoadMP3Button(_ sender: UIButton) {
+        
         displayMP3()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if player.rate > 0.0 {
-           
-
+            
+            
         }
         
         if player.rate < 1.0 {
             
-    
-    
+            
+            
         }
     }
-
+    
 }
 
 

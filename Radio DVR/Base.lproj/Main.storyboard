@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +35,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="ebT-OS-kB0"/>
                                 </constraints>
-                                <state key="normal" title="Load MP3"/>
+                                <state key="normal" title="Play MP3"/>
                                 <connections>
                                     <action selector="LoadMP3Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duQ-f3-z6L"/>
                                 </connections>
@@ -53,10 +53,23 @@
                                     <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="iUr-ja-AA8"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFr-k7-FBY">
-                                <rect key="frame" x="144" y="454" width="86" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfW-Bf-Y6b">
+                                <rect key="frame" x="16" y="469" width="343" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="OLE-ER-I2T"/>
+                                </constraints>
+                                <state key="normal" title="Load New Day's episode"/>
+                                <connections>
+                                    <action selector="manualLoadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lES-cM-71i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFr-k7-FBY">
+                                <rect key="frame" x="16" y="20" width="90" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.16620696362005938" blue="0.10728149979258095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="ImF-Zs-TDk"/>
+                                    <constraint firstAttribute="height" constant="50" id="Mee-tq-Tqv"/>
+                                </constraints>
                                 <state key="normal" title="DELETE">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -67,12 +80,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="guF-hG-ub9" firstAttribute="top" secondItem="TfW-Bf-Y6b" secondAttribute="bottom" constant="8" id="108-la-glN"/>
+                            <constraint firstItem="LFr-k7-FBY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GE3-Ge-e76"/>
                             <constraint firstItem="yCj-mN-ZHD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gnv-Qo-3gt"/>
                             <constraint firstItem="l6J-0p-5GF" firstAttribute="top" secondItem="guF-hG-ub9" secondAttribute="bottom" constant="8" id="M5w-YL-KKg"/>
                             <constraint firstItem="yCj-mN-ZHD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YYF-Bz-kj7"/>
+                            <constraint firstItem="TfW-Bf-Y6b" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ygh-B9-8h9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="l6J-0p-5GF" secondAttribute="trailing" constant="100" id="ex3-6D-Iek"/>
                             <constraint firstItem="guF-hG-ub9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="h5E-8R-skN"/>
                             <constraint firstItem="l6J-0p-5GF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="khU-UY-gL5"/>
+                            <constraint firstItem="TfW-Bf-Y6b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qro-1k-ApO"/>
+                            <constraint firstItem="LFr-k7-FBY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="sas-P4-kSM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="l6J-0p-5GF" secondAttribute="bottom" constant="8" id="uCc-Qf-93h"/>
                             <constraint firstItem="guF-hG-ub9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yFc-lT-sOe"/>
                         </constraints>
