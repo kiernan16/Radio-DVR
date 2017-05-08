@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var audioPlayerView: UIView!
+//    var audioPlayer = AVAudioPlayer()
+    
+    var player = AVPlayer()
+    let avpController = AVPlayerViewController()
+    var currentItem: AVPlayerItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +87,85 @@ class ViewController: UIViewController {
         }
     }
     
+    //https://iosdevcenters.blogspot.com/2016/04/save-and-get-image-from-document.html
     
+    func getDirectoryPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    func displayMP3() {
+//        func getImage(){
+            let fileManager = FileManager.default
+            let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("sunday.mp3")
+            print("imagePAth: \(imagePAth)")
+            if fileManager.fileExists(atPath: imagePAth){
+                //self.imageView.image = UIImage(contentsOfFile: imagePAth)
+                
+                loadMP3(path: imagePAth)
+                
+            }else{
+                print("No Image")
+            }
+//        }
+    }
+    
+    
+    
+    func loadMP3(path: String) {
+        
+        let mp3URL = NSURL(string: path)
+        
+        
+        
+        player = AVPlayer(url: mp3URL! as URL)
+        
+        avpController.player = player
+        avpController.view.frame = audioPlayerView.frame
+        self.addChildViewController(avpController)
+        self.view.addSubview(avpController.view)
+        
+        currentItem = player.currentItem!
+        
+        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+        
+        
+        player.play()
+        
+        
+//        do {
+//            //var error: NSError
+//            audioPlayer = try AVAudioPlayer(contentsOf: mp3URL as! URL)
+//            // do something with data
+//            // if the call fails, the catch block is executed
+//        } catch {
+//            print(error)
+//        }
+//        
+//        audioPlayer.prepareToPlay()
+//        audioPlayer.play()
+        
+    }
+
+    
+  
+    @IBAction func LoadMP3Button(_ sender: UIButton) {
+        displayMP3()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if player.rate > 0.0 {
+           
+
+        }
+        
+        if player.rate < 1.0 {
+            
+    
+    
+        }
+    }
 
 }
 

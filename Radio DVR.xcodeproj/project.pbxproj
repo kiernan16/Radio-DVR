@@ -526,6 +526,7 @@
 				349EE90D1EC023DF0046FDA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		349EE90E1EC023DF0046FDA0 /* Build configuration list for PBXNativeTarget "Radio DVRTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +535,7 @@
 				349EE9101EC023DF0046FDA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		349EE9111EC023DF0046FDA0 /* Build configuration list for PBXNativeTarget "Radio DVRUITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +544,7 @@
 				349EE9131EC023DF0046FDA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
