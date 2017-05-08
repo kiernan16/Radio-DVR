@@ -114,6 +114,19 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func deleteMP3Button(_ sender: UIButton) {
+        deleteMP3()
+    }
+    
+    func deleteMP3(){
+        let fileManager = FileManager.default
+        let episodePath = (self.getDirectoryPath() as NSString).appendingPathComponent("\(episodeDay).mp3")
+        if fileManager.fileExists(atPath: episodePath){
+            try! fileManager.removeItem(atPath: episodePath)
+        }else{
+            print("Something wrong.")
+        }
+    }
     
     func getDirectoryPath() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
