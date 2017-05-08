@@ -27,19 +27,19 @@ class ViewController: UIViewController {
         var dayOfWeek = ""
         
         switch day {
-        case 1:
+        case 0:
             dayOfWeek = "monday"
             break
-        case 2:
+        case 1:
             dayOfWeek = "tuesday"
             break
-        case 3:
+        case 2:
             dayOfWeek = "wednesday"
             break
-        case 4:
+        case 3:
             dayOfWeek = "thursday"
             break
-        case 5:
+        case 4:
             dayOfWeek = "friday"
             break
         default:
@@ -47,7 +47,8 @@ class ViewController: UIViewController {
         }
         
        // if let audioUrl = URL(string: "192.168.1.140/radio/redeye/\(dayOfWeek).mp3") {
-            if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
+//            if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
+         if let audioUrl = URL(string: "http://10.23.75.214/sunday.mp3") {
             // then lets create your document folder url
             let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             
