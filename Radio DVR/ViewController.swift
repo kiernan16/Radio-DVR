@@ -13,7 +13,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var audioPlayerView: UIView!
     
-    var player = AVAudioPlayer()
+   // var player = AVAudioPlayer()
+    var player = AVPlayer()
+    let avpController = AVPlayerViewController()
+    var currentItem: AVPlayerItem!
+    
     var episodeDay = ""
     
     @IBOutlet weak var daySelector: UISegmentedControl!
@@ -83,7 +87,7 @@ class ViewController: UIViewController {
         }
         
          if let audioUrl = URL(string: "192.168.1.140/radio/redeye/\(dayOfWeek).mp3") {
-        //            if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
+//                   if let audioUrl = URL(string: "http://192.168.1.140/radio/redeye/sunday.mp3") {
 //        if let audioUrl = URL(string: "http://10.23.75.214/\(dayOfWeek).mp3") {
             // then lets create your document folder url
             let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -154,22 +158,36 @@ class ViewController: UIViewController {
     
     func loadMP3(path: String) {
         
-        let mp3URL = NSURL(string: path)
+        let mp3URL = NSURL(string: "file://\(path)")
         
-        do {
-            //var error: NSError
-            player = try AVAudioPlayer(contentsOf: mp3URL as! URL)
-            // do something with data
-            // if the call fails, the catch block is executed
-        } catch {
-            print(error)
-        }
+        let asset = AVURLAsset.init(url: mp3URL as! URL)
+        let anItem = AVPlayerItem.init(asset: asset)
         
-        player.prepareToPlay()
-        player.play()
+        player = AVPlayer.init(playerItem: anItem)
         
-        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+//        player = AVPlayer(url: mp3URL! as URL)
         
+            avpController.player = player
+            avpController.view.frame = audioPlayerView.frame
+            self.addChildViewController(avpController)
+            self.view.addSubview(avpController.view)
+            
+            currentItem = player.currentItem!
+        
+//        do {
+//            //var error: NSError
+//            player = try AVAudioPlayer(contentsOf: mp3URL as! URL)
+//            // do something with data
+//            // if the call fails, the catch block is executed
+//        } catch {
+//            print(error)
+//        }
+//        
+//        player.prepareToPlay()
+//        player.play()
+//        
+//        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+//        
         player.play()
         
     }
